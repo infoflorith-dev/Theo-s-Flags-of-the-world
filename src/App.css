@@ -28,23 +28,13 @@
   position: relative;
 }
 
-.game-card::before {
-  content: "🌍";
-  position: absolute;
-  top: 22px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: clamp(3rem, 7vw, 5.2rem);
-  opacity: 0.9;
-  filter: drop-shadow(0 0 24px rgba(103, 232, 249, 0.45));
-}
-
 .start-screen,
-.end-screen,
-.play-screen {
-  width: 100%;
-  position: relative;
-  z-index: 1;
+.end-screen {
+  display: grid;
+  justify-items: center;
+  gap: 22px;
+  text-align: center;
+  padding-top: 0;
 }
 
 .start-screen,
