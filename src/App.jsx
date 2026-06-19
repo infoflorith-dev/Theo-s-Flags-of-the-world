@@ -7,7 +7,7 @@ const ROUND_SECONDS = 10
 const HIGH_SCORE_KEY = 'theos-flags-high-score'
 const SURVIVAL_HIGH_SCORE_KEY = 'theos-flags-survival-high-score'
 const GAMES_PLAYED_KEY = 'theos-flags-games-played'
-
+const USA_HIGH_SCORE_KEY = 'theos-flags-usa-high-score'
 function shuffle(items) {
   return [...items].sort(() => Math.random() - 0.5)
 }
@@ -238,6 +238,9 @@ function App() {
   const [survivalHighScore, setSurvivalHighScore] = useState(() =>
     readStoredNumber(SURVIVAL_HIGH_SCORE_KEY),
   )
+  const [usaHighScore, setUsaHighScore] = useState(() =>
+  readStoredNumber(USA_HIGH_SCORE_KEY),
+)
   const [gamesPlayed, setGamesPlayed] = useState(() =>
     readStoredNumber(GAMES_PLAYED_KEY),
   )
@@ -268,12 +271,27 @@ const progressText = useMemo(() => {
   const survivalScore = gameMode === 'survival' ? roundIndex : 0
   const nextHighScore = Math.max(highScore, finalScore)
   const nextSurvivalHighScore = Math.max(survivalHighScore, survivalScore)
+   const nextUsaHighScore =
+  selectedContinent === 'VS'
+    ? Math.max(usaHighScore, finalScore)
+    : usaHighScore
   const nextGamesPlayed = gamesPlayed + 1
 
-  if (gameMode === 'classic') {
-    localStorage.setItem(HIGH_SCORE_KEY, String(nextHighScore))
+if (gameMode === 'classic') {
+  if (selectedContinent === 'VS') {
+    localStorage.setItem(
+      USA_HIGH_SCORE_KEY,
+      String(nextUsaHighScore)
+    )
+    setUsaHighScore(nextUsaHighScore)
+  } else {
+    localStorage.setItem(
+      HIGH_SCORE_KEY,
+      String(nextHighScore)
+    )
     setHighScore(nextHighScore)
   }
+}
 
   if (gameMode === 'survival') {
     localStorage.setItem(SURVIVAL_HIGH_SCORE_KEY, String(nextSurvivalHighScore))
@@ -283,7 +301,15 @@ const progressText = useMemo(() => {
   localStorage.setItem(GAMES_PLAYED_KEY, String(nextGamesPlayed))
   setGamesPlayed(nextGamesPlayed)
   setScreen('finished')
-}, [gameMode, gamesPlayed, highScore, roundIndex, survivalHighScore])
+}, [
+  gameMode,
+  gamesPlayed,
+  highScore,
+  roundIndex,
+  survivalHighScore,
+  selectedContinent,
+  usaHighScore,
+])
   const goToNextRound = useCallback((nextScore = score) => {
     if (roundIndex + 1 >= TOTAL_ROUNDS) {
       finishGame(nextScore)
