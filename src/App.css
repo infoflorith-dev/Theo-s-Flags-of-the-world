@@ -318,68 +318,77 @@ h1 {
 
 @media (max-width: 680px) {
   .game-shell {
-    padding: 8px;
+    padding: 6px;
   }
 
   .game-card {
-    min-height: calc(100svh - 16px);
-    padding: 12px;
-    border-radius: 20px;
+    min-height: calc(100svh - 12px);
+    padding: 10px;
+    border-radius: 18px;
+    background-size: cover;
     background-position: center top;
   }
 
   .start-screen,
   .end-screen {
-    padding-top: 300px;
-    gap: 10px;
+    padding-top: 380px;
+    gap: 8px;
     max-width: 100%;
   }
 
   .game-mode-picker {
     width: 100%;
-    display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    display: grid;
+    gap: 8px;
     margin-top: 0;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
   .mode-button {
     width: 100%;
-    min-height: 56px;
-    font-size: 0.95rem;
-    border-radius: 14px;
+    min-height: 50px;
+    font-size: 0.9rem;
+    border-radius: 13px;
   }
 
   .continent-picker {
     width: 100%;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 8px;
   }
 
   .continent-button {
-    min-height: 92px;
-    padding: 8px;
-    border-radius: 14px;
-    gap: 4px;
+    min-height: 74px;
+    padding: 6px;
+    border-radius: 13px;
+    gap: 2px;
   }
 
   .continent-icon {
-    font-size: 1.7rem;
+    font-size: 1.45rem;
   }
 
   .continent-title {
-    font-size: 0.95rem;
+    font-size: 0.82rem;
+    line-height: 1;
   }
 
   .continent-subtitle {
-    font-size: 0.72rem;
+    font-size: 0.64rem;
+    line-height: 1.15;
   }
 
   .stats-row,
   .scoreboard,
   .answers {
     grid-template-columns: 1fr;
+  }
+
+  .stats-row > div,
+  .scoreboard > div {
+    min-height: 70px;
+    padding: 10px;
   }
 
   .scoreboard {
@@ -402,6 +411,6 @@ h1 {
   }
 
   .answer-button {
-    min-height: 64px;
+    min-height: 58px;
   }
 }
