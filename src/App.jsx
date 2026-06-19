@@ -553,11 +553,7 @@ return (
     onClick={useHint}
     type="button"
   >
-<img
-  src="https://flagcdn.com/w40/nl.png"
-  alt="Hint"
-  className="hint-flag-image"
-/>
+<span className="nl-flag-icon" />
   </button>
 ))}
     </div>
