@@ -387,12 +387,13 @@ if (gameMode === 'survival') {
   </button>
 
   <button
-    className={`mode-button ${gameMode === 'survival' ? 'active' : ''}`}
-    onClick={() => setGameMode('survival')}
-    type="button"
-  >
-    🔥 Survival
-  </button>
+  className={`mode-button ${gameMode === 'survival' ? 'active' : ''}`}
+  onClick={() => setGameMode('survival')}
+  disabled={selectedContinent === 'VS'}
+  type="button"
+>
+  🔥 Survival
+</button>
 </div>
             <div className="continent-picker">
               {CONTINENTS.map((continent) => (
@@ -401,7 +402,13 @@ if (gameMode === 'survival') {
                     selectedContinent === continent.value ? 'active' : ''
                   }`}
                   key={continent.value}
-                  onClick={() => setSelectedContinent(continent.value)}
+                 onClick={() => {
+  setSelectedContinent(continent.value)
+
+  if (continent.value === 'VS') {
+    setGameMode('classic')
+  }
+}}
                   type="button"
                 >
                 <>
