@@ -199,7 +199,10 @@ function readStoredNumber(key) {
 
 function FlagImage({ country }) {
   const [hasError, setHasError] = useState(false)
-  const flagUrl = `https://flagcdn.com/w640/${country.code}.png`
+
+  const flagUrl = country.code.startsWith('us-')
+    ? `https://cdn.jsdelivr.net/gh/hampusborgos/country-flags@main/svg/us/${country.code.replace('us-', '')}.svg`
+    : `https://flagcdn.com/w640/${country.code}.png`
 
   if (hasError) {
     return (
