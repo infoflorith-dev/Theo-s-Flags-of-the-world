@@ -49,12 +49,18 @@ const CONTINENTS = [
     subtitle: 'Zuid-Amerikaanse landen',
     value: 'Zuid-Amerika',
   },
-  {
-    icon: '🌊',
-    title: 'OCEANIË',
-    subtitle: 'Oceanische landen',
-    value: 'Oceanie',
-  },
+{
+  icon: '🌊',
+  title: 'OCEANIË',
+  subtitle: 'Oceanische landen',
+  value: 'Oceanie',
+},
+{
+  icon: '🇺🇸',
+  title: 'VS STATEN',
+  subtitle: 'Amerikaanse staten',
+  value: 'VS',
+},
 ]
 
 function getContinent(code) {
