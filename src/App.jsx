@@ -499,7 +499,7 @@ if (gameMode === 'survival') {
       💡 {hintsLeft}
     </button>
   )}
-</div>>
+</div>
               <div>
                 <span>Score</span>
                 <strong>{score}</strong>
