@@ -388,8 +388,11 @@ h1 {
   display: none;
 }
 
- .stats-row {
+.stats-row {
+  width: 67%;
+  margin: 0 auto;
   grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
 }
 
 .scoreboard,
@@ -397,11 +400,15 @@ h1 {
   grid-template-columns: 1fr;
 }
 
-  .stats-row > div,
-  .scoreboard > div {
-    min-height: 70px;
-    padding: 10px;
-  }
+ .stats-row > div {
+  min-height: 60px;
+  padding: 6px;
+}
+
+.scoreboard > div {
+  min-height: 70px;
+  padding: 10px;
+}
 
   .scoreboard {
     grid-template-areas:
