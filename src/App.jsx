@@ -291,10 +291,7 @@ if (gameMode === 'survival') {
       <section className="game-card">
         {screen === 'start' && (
           <div className="start-screen">
-                    <p className="intro">
-  🌍 Herken vlaggen uit de hele wereld en verbeter je record.
-</p>
-        <div className="game-mode-picker">
+              <div className="game-mode-picker">
   <button
     className={`mode-button ${gameMode === 'classic' ? 'active' : ''}`}
     onClick={() => setGameMode('classic')}
