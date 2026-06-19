@@ -539,7 +539,9 @@ return (
               })}
             </div>
        {gameMode === 'survival' && (
-  <div className="hint-flags">
+  <div className="hint-label">
+  💡 Verwijder 2 foute antwoorden
+</div>
     {Array.from({ length: hintsLeft }).map((_, index) => (
       <button
         className="hint-flag"
