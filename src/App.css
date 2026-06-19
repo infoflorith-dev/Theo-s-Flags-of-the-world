@@ -36,15 +36,6 @@ background-repeat: no-repeat;
   position: relative;
 }
 
-.start-screen,
-.end-screen {
-  display: grid;
-  justify-items: center;
-  gap: 22px;
-  text-align: center;
-  padding-top: 0;
-}
-
 h1 {
   max-width: 860px;
   margin: 0;
