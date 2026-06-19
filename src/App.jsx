@@ -420,17 +420,24 @@ if (gameMode === 'survival') {
                 </button>
               ))}
             </div>
-           <div className="stats-row" aria-label="Highscores">
+    <div className="stats-row" aria-label="Highscores">
   <div>
-    <span>Klassiek highscore</span>
+    <span>🏆 Klassiek highscore</span>
     <strong>{highScore}</strong>
   </div>
+
   <div>
-    <span>Survival record</span>
+    <span>🔥 Survival record</span>
     <strong>{survivalHighScore}</strong>
   </div>
+
   <div>
-    <span>Gespeelde spellen</span>
+    <span>🇺🇸 VS record</span>
+    <strong>{usaHighScore}</strong>
+  </div>
+
+  <div>
+    <span>🎮 Gespeelde spellen</span>
     <strong>{gamesPlayed}</strong>
   </div>
 </div>
