@@ -482,3 +482,17 @@ h1 {
   font-weight: 900;
   text-transform: uppercase;
 }
+.hint-flag {
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hint-flag-image {
+  width: 42px;
+  height: auto;
+  border-radius: 4px;
+}
