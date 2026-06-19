@@ -390,9 +390,23 @@ if (gameMode === 'survival') {
               </div>
             </div>
 
-            <button className="primary-button" type="button" onClick={startGame}>
-              Opnieuw spelen
-            </button>
+          <div className="answers">
+  <button
+    className="primary-button"
+    type="button"
+    onClick={startGame}
+  >
+    Opnieuw spelen
+  </button>
+
+  <button
+    className="primary-button"
+    type="button"
+    onClick={() => setScreen('start')}
+  >
+    Hoofdmenu
+  </button>
+</div>
           </div>
         )}
       </section>
