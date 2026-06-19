@@ -325,7 +325,7 @@ h1 {
     min-height: calc(100svh - 12px);
     padding: 10px;
     border-radius: 18px;
-    background-size: cover;
+    background-size: contain;
     background-position: center top;
   }
 
