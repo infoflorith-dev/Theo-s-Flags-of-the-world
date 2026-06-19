@@ -469,3 +469,16 @@ h1 {
   margin-top: 8px;
   margin-bottom: 6px;
 }
+.hint-area {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.hint-label {
+  color: #facc15;
+  font-size: 0.85rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
