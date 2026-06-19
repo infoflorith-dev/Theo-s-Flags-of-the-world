@@ -256,12 +256,7 @@ if (gameMode === 'survival') {
       <section className="game-card">
         {screen === 'start' && (
           <div className="start-screen">
-            <img
-  src={flagsBackground}
-  alt="Theo's Flags of the World"
-  className="hero-banner"
-/>
-           <p className="intro">
+                    <p className="intro">
   🌍 Herken vlaggen uit de hele wereld en verbeter je record.
 </p>
             <div className="continent-picker">
