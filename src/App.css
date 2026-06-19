@@ -347,7 +347,7 @@ h1 {
 }
 
   .game-mode-picker {
-  width: 92%;
+  width: 88%;
     grid-template-columns: 1fr 1fr;
     display: grid;
     gap: 8px;
@@ -357,20 +357,20 @@ h1 {
 
  .mode-button {
   width: 100%;
-  min-height: 44px;
+  min-height: 38px;
     min-height: 50px;
     font-size: 0.9rem;
     border-radius: 13px;
   }
 
- .continent-picker {
-  width: 92%;
+.continent-picker {
+  width: 88%;
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
   }
 
 .continent-button {
-  min-height: 58px;
+  min-height: 50px;
   padding: 4px;
   border-radius: 13px;
   gap: 2px;
