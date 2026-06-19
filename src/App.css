@@ -339,49 +339,48 @@ h1 {
   background-repeat: no-repeat;
 }
 
-  .start-screen,
+ .start-screen,
 .end-screen {
-  padding-top: 300px;
-  gap: 6px;
-  max-width: 88%;
+  padding-top: 290px;
+  gap: 5px;
+  max-width: 100%;
 }
 
-  .game-mode-picker {
-  width: 88%;
-    grid-template-columns: 1fr 1fr;
-    display: grid;
-    gap: 8px;
-    margin-top: 0;
-    margin-bottom: 8px;
-  }
+.game-mode-picker {
+  width: 78%;
+  grid-template-columns: 1fr 1fr;
+  display: grid;
+  gap: 6px;
+  margin-top: 0;
+  margin-bottom: 6px;
+}
 
- .mode-button {
+.mode-button {
   width: 100%;
-  min-height: 38px;
-    min-height: 50px;
-    font-size: 0.9rem;
-    border-radius: 13px;
-  }
+  min-height: 34px;
+  font-size: 0.78rem;
+  border-radius: 11px;
+}
 
 .continent-picker {
-  width: 88%;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-  }
-
-.continent-button {
-  min-height: 50px;
-  padding: 4px;
-  border-radius: 13px;
-  gap: 2px;
+  width: 78%;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
 }
 
-  .continent-icon {
-    font-size: 1.45rem;
-  }
+.continent-button {
+  min-height: 34px;
+  padding: 3px;
+  border-radius: 11px;
+  gap: 1px;
+}
+
+.continent-icon {
+  font-size: 1.05rem;
+}
 
 .continent-title {
-  font-size: 0.72rem;
+  font-size: 0.66rem;
   line-height: 1;
 }
 
