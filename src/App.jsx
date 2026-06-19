@@ -538,21 +538,25 @@ return (
                 )
               })}
             </div>
-       {gameMode === 'survival' && (
-  <div className="hint-label">
-  💡 Verwijder 2 foute antwoorden
-</div>
-    {Array.from({ length: hintsLeft }).map((_, index) => (
-      <button
-        className="hint-flag"
-        key={index}
-        disabled={Boolean(selectedCode)}
-        onClick={useHint}
-        type="button"
-      >
-     🇳🇱
-      </button>
-    ))}
+      {gameMode === 'survival' && (
+  <div className="hint-area">
+    <div className="hint-label">
+      💡 Verwijder 2 foute antwoorden
+    </div>
+
+    <div className="hint-flags">
+      {Array.from({ length: hintsLeft }).map((_, index) => (
+        <button
+          className="hint-flag"
+          key={index}
+          disabled={Boolean(selectedCode)}
+          onClick={useHint}
+          type="button"
+        >
+          🇳🇱
+        </button>
+      ))}
+    </div>
   </div>
 )}
           </div>
