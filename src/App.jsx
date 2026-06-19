@@ -118,13 +118,65 @@ function getContinent(code) {
 
   return map[code] || 'Overig'
 }
-
+const usaStates = [
+  { code: 'us-al', name: 'Alabama' },
+  { code: 'us-ak', name: 'Alaska' },
+  { code: 'us-az', name: 'Arizona' },
+  { code: 'us-ar', name: 'Arkansas' },
+  { code: 'us-ca', name: 'California' },
+  { code: 'us-co', name: 'Colorado' },
+  { code: 'us-ct', name: 'Connecticut' },
+  { code: 'us-de', name: 'Delaware' },
+  { code: 'us-fl', name: 'Florida' },
+  { code: 'us-ga', name: 'Georgia' },
+  { code: 'us-hi', name: 'Hawaii' },
+  { code: 'us-id', name: 'Idaho' },
+  { code: 'us-il', name: 'Illinois' },
+  { code: 'us-in', name: 'Indiana' },
+  { code: 'us-ia', name: 'Iowa' },
+  { code: 'us-ks', name: 'Kansas' },
+  { code: 'us-ky', name: 'Kentucky' },
+  { code: 'us-la', name: 'Louisiana' },
+  { code: 'us-me', name: 'Maine' },
+  { code: 'us-md', name: 'Maryland' },
+  { code: 'us-ma', name: 'Massachusetts' },
+  { code: 'us-mi', name: 'Michigan' },
+  { code: 'us-mn', name: 'Minnesota' },
+  { code: 'us-ms', name: 'Mississippi' },
+  { code: 'us-mo', name: 'Missouri' },
+  { code: 'us-mt', name: 'Montana' },
+  { code: 'us-ne', name: 'Nebraska' },
+  { code: 'us-nv', name: 'Nevada' },
+  { code: 'us-nh', name: 'New Hampshire' },
+  { code: 'us-nj', name: 'New Jersey' },
+  { code: 'us-nm', name: 'New Mexico' },
+  { code: 'us-ny', name: 'New York' },
+  { code: 'us-nc', name: 'North Carolina' },
+  { code: 'us-nd', name: 'North Dakota' },
+  { code: 'us-oh', name: 'Ohio' },
+  { code: 'us-ok', name: 'Oklahoma' },
+  { code: 'us-or', name: 'Oregon' },
+  { code: 'us-pa', name: 'Pennsylvania' },
+  { code: 'us-ri', name: 'Rhode Island' },
+  { code: 'us-sc', name: 'South Carolina' },
+  { code: 'us-sd', name: 'South Dakota' },
+  { code: 'us-tn', name: 'Tennessee' },
+  { code: 'us-tx', name: 'Texas' },
+  { code: 'us-ut', name: 'Utah' },
+  { code: 'us-vt', name: 'Vermont' },
+  { code: 'us-va', name: 'Virginia' },
+  { code: 'us-wa', name: 'Washington' },
+  { code: 'us-wv', name: 'West Virginia' },
+  { code: 'us-wi', name: 'Wisconsin' },
+  { code: 'us-wy', name: 'Wyoming' },
+]
 function createRounds(continent = 'all', mode = 'classic') {
   const pool =
-    continent === 'all'
-      ? countries
-      : countries.filter((country) => getContinent(country.code) === continent)
-
+    continent === 'VS'
+      ? []
+      : continent === 'all'
+        ? countries
+        : countries.filter((country) => getContinent(country.code) === continent)
   const roundLimit = mode === 'survival' ? pool.length : TOTAL_ROUNDS
 
   return shuffle(pool)
