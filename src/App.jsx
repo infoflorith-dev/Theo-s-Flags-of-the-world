@@ -138,9 +138,10 @@ function App() {
     readStoredNumber(HIGH_SCORE_KEY),
   )
   const [gamesPlayed, setGamesPlayed] = useState(() =>
-      const [selectedContinent, setSelectedContinent] = useState('all')
-    readStoredNumber(GAMES_PLAYED_KEY),
-  )
+  readStoredNumber(GAMES_PLAYED_KEY),
+)
+
+const [selectedContinent, setSelectedContinent] = useState('all')
 
   const currentRound = rounds[roundIndex]
   const isPlaying = screen === 'playing' && currentRound && !selectedCode
