@@ -151,10 +151,13 @@ function App() {
   const currentRound = rounds[roundIndex]
   const isPlaying = screen === 'playing' && currentRound && !selectedCode
 
-  const progressText = useMemo(
-    () => `${Math.min(roundIndex + 1, TOTAL_ROUNDS)} van ${TOTAL_ROUNDS}`,
-    [roundIndex],
-  )
+const progressText = useMemo(() => {
+  if (gameMode === 'survival') {
+    return `${roundIndex + 1}`
+  }
+
+  return `${Math.min(roundIndex + 1, TOTAL_ROUNDS)} van ${TOTAL_ROUNDS}`
+}, [gameMode, roundIndex])
 
   function startGame() {
  setRounds(createRounds(selectedContinent, gameMode))
@@ -225,7 +228,15 @@ function App() {
     setRoundResult(isCorrect ? 'correct' : 'wrong')
     setScore(nextScore)
 
+if (gameMode === 'survival') {
+  if (isCorrect) {
     window.setTimeout(() => goToNextRound(nextScore), 1300)
+  } else {
+    window.setTimeout(() => finishGame(nextScore), 1300)
+  }
+} else {
+  window.setTimeout(() => goToNextRound(nextScore), 1300)
+}
   }
 
   return (
