@@ -261,12 +261,9 @@ if (gameMode === 'survival') {
   alt="Theo's Flags of the World"
   className="hero-banner"
 />
-            <p className="eyebrow">Vlaggenquiz</p>
-            <h1>Theo&apos;s Flags of the World</h1>
-            <p className="intro">
-              Herken 20 vlaggen. Hoe sneller je goed antwoordt, hoe meer
-              punten je pakt.
-            </p>
+           <p className="intro">
+  🌍 Herken vlaggen uit de hele wereld en verbeter je record.
+</p>
             <div className="continent-picker">
   <button
     className={`continent-button ${gameMode === 'classic' ? 'active' : ''}`}
