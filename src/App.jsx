@@ -169,18 +169,26 @@ const progressText = useMemo(() => {
     setScreen('playing')
   }
 
-  const finishGame = useCallback((finalScore) => {
-    const nextHighScore = Math.max(highScore, finalScore)
-    const nextGamesPlayed = gamesPlayed + 1
+ const finishGame = useCallback((finalScore) => {
+  const survivalScore = gameMode === 'survival' ? roundIndex : 0
+  const nextHighScore = Math.max(highScore, finalScore)
+  const nextSurvivalHighScore = Math.max(survivalHighScore, survivalScore)
+  const nextGamesPlayed = gamesPlayed + 1
 
+  if (gameMode === 'classic') {
     localStorage.setItem(HIGH_SCORE_KEY, String(nextHighScore))
-    localStorage.setItem(GAMES_PLAYED_KEY, String(nextGamesPlayed))
-
     setHighScore(nextHighScore)
-    setGamesPlayed(nextGamesPlayed)
-    setScreen('finished')
-  }, [gamesPlayed, highScore])
+  }
 
+  if (gameMode === 'survival') {
+    localStorage.setItem(SURVIVAL_HIGH_SCORE_KEY, String(nextSurvivalHighScore))
+    setSurvivalHighScore(nextSurvivalHighScore)
+  }
+
+  localStorage.setItem(GAMES_PLAYED_KEY, String(nextGamesPlayed))
+  setGamesPlayed(nextGamesPlayed)
+  setScreen('finished')
+}, [gameMode, gamesPlayed, highScore, roundIndex, survivalHighScore])
   const goToNextRound = useCallback((nextScore = score) => {
     if (roundIndex + 1 >= TOTAL_ROUNDS) {
       finishGame(nextScore)
@@ -285,16 +293,20 @@ if (gameMode === 'survival') {
                 </button>
               ))}
             </div>
-            <div className="stats-row" aria-label="Highscore">
-              <div>
-                <span>Highscore</span>
-                <strong>{highScore}</strong>
-              </div>
-              <div>
-                <span>Gespeelde spellen</span>
-                <strong>{gamesPlayed}</strong>
-              </div>
-            </div>
+           <div className="stats-row" aria-label="Highscores">
+  <div>
+    <span>Klassiek highscore</span>
+    <strong>{highScore}</strong>
+  </div>
+  <div>
+    <span>Survival record</span>
+    <strong>{survivalHighScore}</strong>
+  </div>
+  <div>
+    <span>Gespeelde spellen</span>
+    <strong>{gamesPlayed}</strong>
+  </div>
+</div>
 
             <button className="primary-button" type="button" onClick={startGame}>
               Start
