@@ -340,14 +340,14 @@ h1 {
 }
 
   .start-screen,
-  .end-screen {
-    padding-top: 380px;
-    gap: 8px;
-    max-width: 100%;
-  }
+.end-screen {
+  padding-top: 330px;
+  gap: 6px;
+  max-width: 88%;
+}
 
   .game-mode-picker {
-    width: 100%;
+  width: 92%;
     grid-template-columns: 1fr 1fr;
     display: grid;
     gap: 8px;
@@ -355,15 +355,16 @@ h1 {
     margin-bottom: 8px;
   }
 
-  .mode-button {
-    width: 100%;
+ .mode-button {
+  width: 100%;
+  min-height: 44px;
     min-height: 50px;
     font-size: 0.9rem;
     border-radius: 13px;
   }
 
-  .continent-picker {
-    width: 100%;
+ .continent-picker {
+  width: 92%;
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
   }
