@@ -13,13 +13,48 @@ function shuffle(items) {
 }
 
 const CONTINENTS = [
-  { label: '🌍 Alles', value: 'all' },
-  { label: '🇪🇺 Europa', value: 'Europa' },
-  { label: '🌍 Afrika', value: 'Afrika' },
-  { label: '🌏 Azië', value: 'Azie' },
-  { label: '🌎 Noord-Amerika', value: 'Noord-Amerika' },
-  { label: '🌎 Zuid-Amerika', value: 'Zuid-Amerika' },
-  { label: '🌊 Oceanië', value: 'Oceanie' },
+  {
+    icon: '🌍',
+    title: 'ALLES',
+    subtitle: 'Alle continenten',
+    value: 'all',
+  },
+  {
+    icon: '🇪🇺',
+    title: 'EUROPA',
+    subtitle: 'Europese landen',
+    value: 'Europa',
+  },
+  {
+    icon: '🌍',
+    title: 'AFRIKA',
+    subtitle: 'Afrikaanse landen',
+    value: 'Afrika',
+  },
+  {
+    icon: '🌏',
+    title: 'AZIË',
+    subtitle: 'Aziatische landen',
+    value: 'Azie',
+  },
+  {
+    icon: '🌎',
+    title: 'NOORD-AMERIKA',
+    subtitle: 'Noord-Amerikaanse landen',
+    value: 'Noord-Amerika',
+  },
+  {
+    icon: '🌎',
+    title: 'ZUID-AMERIKA',
+    subtitle: 'Zuid-Amerikaanse landen',
+    value: 'Zuid-Amerika',
+  },
+  {
+    icon: '🌊',
+    title: 'OCEANIË',
+    subtitle: 'Oceanische landen',
+    value: 'Oceanie',
+  },
 ]
 
 function getContinent(code) {
