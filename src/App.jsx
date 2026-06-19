@@ -553,7 +553,7 @@ return (
     onClick={useHint}
     type="button"
   >
-    🇳🇱
+  {'🇳🇱'}
   </button>
 ))}
     </div>
