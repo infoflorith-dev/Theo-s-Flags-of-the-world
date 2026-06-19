@@ -322,12 +322,22 @@ h1 {
   }
 
   .game-card {
-    min-height: calc(100svh - 12px);
-    padding: 10px;
-    border-radius: 18px;
-    background-size: contain;
-    background-position: center top;
-  }
+  min-height: calc(100svh - 12px);
+  padding: 10px;
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.75)
+    ),
+    url('./assets/flag-background-mobil.png');
+
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
 
   .start-screen,
   .end-screen {
