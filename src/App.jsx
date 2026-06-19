@@ -545,17 +545,17 @@ return (
     </div>
 
     <div className="hint-flags">
-      {Array.from({ length: hintsLeft }).map((_, index) => (
-        <button
-          className="hint-flag"
-          key={index}
-          disabled={Boolean(selectedCode)}
-          onClick={useHint}
-          type="button"
-        >
-          🇳🇱
-        </button>
-      ))}
+   {Array.from({ length: hintsLeft }).map((_, index) => (
+  <button
+    className="hint-flag"
+    key={index}
+    disabled={Boolean(selectedCode)}
+    onClick={useHint}
+    type="button"
+  >
+    🇳🇱
+  </button>
+))}
     </div>
   </div>
 )}
