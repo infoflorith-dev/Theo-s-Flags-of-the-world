@@ -496,3 +496,16 @@ h1 {
   height: auto;
   border-radius: 4px;
 }
+.nl-flag-icon {
+  width: 42px;
+  height: 28px;
+  display: block;
+  border-radius: 3px;
+  background: linear-gradient(
+    to bottom,
+    #ae1c28 0 33.33%,
+    #ffffff 33.33% 66.66%,
+    #21468b 66.66% 100%
+  );
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.35);
+}
