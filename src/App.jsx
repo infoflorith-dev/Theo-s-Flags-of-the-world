@@ -246,6 +246,8 @@ function App() {
   )
   const [selectedContinent, setSelectedContinent] = useState('all')
   const [gameMode, setGameMode] = useState('classic')
+  const [hintsLeft, setHintsLeft] = useState(3)
+  const [hiddenAnswerCodes, setHiddenAnswerCodes] = useState([])
   const currentRound = rounds[roundIndex]
   const isPlaying = screen === 'playing' && currentRound && !selectedCode
 
@@ -260,13 +262,35 @@ const progressText = useMemo(() => {
   function startGame() {
  setRounds(createRounds(selectedContinent, gameMode))
     setRoundIndex(0)
+    setHintsLeft(3)
+    setHiddenAnswerCodes([])
     setTimeLeft(ROUND_SECONDS)
     setScore(0)
     setSelectedCode(null)
     setRoundResult(null)
     setScreen('playing')
   }
+function useHint() {
+  if (
+    gameMode !== 'survival' ||
+    hintsLeft <= 0 ||
+    !currentRound ||
+    selectedCode
+  ) {
+    return
+  }
 
+  const wrongAnswers = currentRound.answers.filter(
+    (answer) => answer.code !== currentRound.country.code
+  )
+
+  const answersToHide = shuffle(wrongAnswers)
+    .slice(0, 2)
+    .map((answer) => answer.code)
+
+  setHiddenAnswerCodes(answersToHide)
+  setHintsLeft((amount) => amount - 1)
+}
  const finishGame = useCallback((finalScore) => {
   const survivalScore = gameMode === 'survival' ? roundIndex : 0
   const nextHighScore = Math.max(highScore, finalScore)
@@ -462,9 +486,20 @@ if (gameMode === 'survival') {
                 <span>Vraag</span>
                 <strong>{progressText}</strong>
               </div>
-              <div className="timer" aria-label={`Nog ${timeLeft} seconden`}>
-                {timeLeft}
-              </div>
+            <div className="timer" aria-label={`Nog ${timeLeft} seconden`}>
+  {timeLeft}
+
+  {gameMode === 'survival' && (
+    <button
+      className="hint-button"
+      disabled={hintsLeft <= 0 || Boolean(selectedCode)}
+      onClick={useHint}
+      type="button"
+    >
+      💡 {hintsLeft}
+    </button>
+  )}
+</div>>
               <div>
                 <span>Score</span>
                 <strong>{score}</strong>
@@ -496,12 +531,16 @@ if (gameMode === 'survival') {
                       : ''
                   : ''
 
-                return (
-                  <button
-                    className={`answer-button ${resultClass}`}
-                    disabled={Boolean(selectedCode) || timeLeft === 0}
-                    key={answer.code}
-                    onClick={() => chooseAnswer(answer)}
+            if (hiddenAnswerCodes.includes(answer.code)) {
+  return null
+}
+
+return (
+  <button
+    className={`answer-button ${resultClass}`}
+    disabled={Boolean(selectedCode) || timeLeft === 0}
+    key={answer.code}
+    onClick={() => chooseAnswer(answer)}
                     type="button"
                   >
                     {answer.name}
