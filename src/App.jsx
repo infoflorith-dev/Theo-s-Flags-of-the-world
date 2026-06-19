@@ -11,7 +11,6 @@ const GAMES_PLAYED_KEY = 'theos-flags-games-played'
 function shuffle(items) {
   return [...items].sort(() => Math.random() - 0.5)
 }
-
 const CONTINENTS = [
   {
     icon: '🌍',
@@ -172,8 +171,8 @@ const usaStates = [
 ]
 function createRounds(continent = 'all', mode = 'classic') {
   const pool =
-    continent === 'VS'
-      ? []
+ continent === 'VS'
+  ? usaStates
       : continent === 'all'
         ? countries
         : countries.filter((country) => getContinent(country.code) === continent)
