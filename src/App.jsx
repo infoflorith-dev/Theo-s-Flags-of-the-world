@@ -294,9 +294,9 @@ if (gameMode === 'survival') {
                     <p className="intro">
   🌍 Herken vlaggen uit de hele wereld en verbeter je record.
 </p>
-            <div className="continent-picker">
+        <div className="game-mode-picker">
   <button
-    className={`continent-button ${gameMode === 'classic' ? 'active' : ''}`}
+    className={`mode-button ${gameMode === 'classic' ? 'active' : ''}`}
     onClick={() => setGameMode('classic')}
     type="button"
   >
@@ -304,7 +304,7 @@ if (gameMode === 'survival') {
   </button>
 
   <button
-    className={`continent-button ${gameMode === 'survival' ? 'active' : ''}`}
+    className={`mode-button ${gameMode === 'survival' ? 'active' : ''}`}
     onClick={() => setGameMode('survival')}
     type="button"
   >
