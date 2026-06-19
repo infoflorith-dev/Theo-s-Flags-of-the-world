@@ -321,7 +321,19 @@ if (gameMode === 'survival') {
                   onClick={() => setSelectedContinent(continent.value)}
                   type="button"
                 >
-                  {continent.label}
+                <>
+  <div className="continent-icon">
+    {continent.icon}
+  </div>
+
+  <div className="continent-title">
+    {continent.title}
+  </div>
+
+  <div className="continent-subtitle">
+    {continent.subtitle}
+  </div>
+</>
                 </button>
               ))}
             </div>
