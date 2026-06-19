@@ -5,6 +5,7 @@ import './App.css'
 const TOTAL_ROUNDS = 20
 const ROUND_SECONDS = 10
 const HIGH_SCORE_KEY = 'theos-flags-high-score'
+const SURVIVAL_HIGH_SCORE_KEY = 'theos-flags-survival-high-score'
 const GAMES_PLAYED_KEY = 'theos-flags-games-played'
 
 function shuffle(items) {
@@ -77,18 +78,20 @@ function getContinent(code) {
   return map[code] || 'Overig'
 }
 
-function createRounds(continent = 'all') {
+function createRounds(continent = 'all', mode = 'classic') {
   const pool =
     continent === 'all'
       ? countries
       : countries.filter((country) => getContinent(country.code) === continent)
 
+  const roundLimit = mode === 'survival' ? pool.length : TOTAL_ROUNDS
+
   return shuffle(pool)
-    .slice(0, TOTAL_ROUNDS)
+    .slice(0, roundLimit)
     .map((country) => {
-    const wrongAnswers = shuffle(
-  pool.filter((candidate) => candidate.code !== country.code),
-).slice(0, 3)
+      const wrongAnswers = shuffle(
+        pool.filter((candidate) => candidate.code !== country.code),
+      ).slice(0, 3)
 
       return {
         country,
@@ -137,12 +140,14 @@ function App() {
   const [highScore, setHighScore] = useState(() =>
     readStoredNumber(HIGH_SCORE_KEY),
   )
+  const [survivalHighScore, setSurvivalHighScore] = useState(() =>
+    readStoredNumber(SURVIVAL_HIGH_SCORE_KEY),
+  )
   const [gamesPlayed, setGamesPlayed] = useState(() =>
-  readStoredNumber(GAMES_PLAYED_KEY),
-)
-
-const [selectedContinent, setSelectedContinent] = useState('all')
-
+    readStoredNumber(GAMES_PLAYED_KEY),
+  )
+  const [selectedContinent, setSelectedContinent] = useState('all')
+  const [gameMode, setGameMode] = useState('classic')
   const currentRound = rounds[roundIndex]
   const isPlaying = screen === 'playing' && currentRound && !selectedCode
 
@@ -152,7 +157,7 @@ const [selectedContinent, setSelectedContinent] = useState('all')
   )
 
   function startGame() {
- setRounds(createRounds(selectedContinent))
+ setRounds(createRounds(selectedContinent, gameMode))
     setRoundIndex(0)
     setTimeLeft(ROUND_SECONDS)
     setScore(0)
@@ -234,6 +239,23 @@ const [selectedContinent, setSelectedContinent] = useState('all')
               Herken 20 vlaggen. Hoe sneller je goed antwoordt, hoe meer
               punten je pakt.
             </p>
+            <div className="continent-picker">
+  <button
+    className={`continent-button ${gameMode === 'classic' ? 'active' : ''}`}
+    onClick={() => setGameMode('classic')}
+    type="button"
+  >
+    🎯 Klassiek
+  </button>
+
+  <button
+    className={`continent-button ${gameMode === 'survival' ? 'active' : ''}`}
+    onClick={() => setGameMode('survival')}
+    type="button"
+  >
+    🔥 Survival
+  </button>
+</div>
             <div className="continent-picker">
               {CONTINENTS.map((continent) => (
                 <button
