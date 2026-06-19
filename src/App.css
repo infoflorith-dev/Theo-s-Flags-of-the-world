@@ -340,3 +340,12 @@ h1 {
     min-height: 64px;
   }
 }
+.hero-banner {
+  width: 100%;
+  max-width: 1100px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.45),
+    0 0 40px rgba(103,232,249,.15);
+}
