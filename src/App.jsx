@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { countries } from './countries'
 import './App.css'
-
+import flagsBackground from './assets/flags-background.png'
 const TOTAL_ROUNDS = 20
 const ROUND_SECONDS = 10
 const HIGH_SCORE_KEY = 'theos-flags-high-score'
@@ -256,6 +256,11 @@ if (gameMode === 'survival') {
       <section className="game-card">
         {screen === 'start' && (
           <div className="start-screen">
+            <img
+  src={flagsBackground}
+  alt="Theo's Flags of the World"
+  className="hero-banner"
+/>
             <p className="eyebrow">Vlaggenquiz</p>
             <h1>Theo&apos;s Flags of the World</h1>
             <p className="intro">
