@@ -538,6 +538,16 @@ return (
                 )
               })}
             </div>
+            {gameMode === 'survival' && (
+  <button
+    className="hint-button"
+    disabled={hintsLeft <= 0 || Boolean(selectedCode)}
+    onClick={useHint}
+    type="button"
+  >
+    💡 Hulp gebruiken ({hintsLeft})
+  </button>
+)}
           </div>
         )}
 
