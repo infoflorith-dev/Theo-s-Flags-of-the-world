@@ -10,10 +10,10 @@
 }
 
 .game-card {
-  width: min(1040px, 100%);
-  min-height: min(820px, calc(100svh - 48px));
+ width: min(1200px, 100%);
+min-height: min(900px, calc(100svh - 48px));
   display: grid;
-  align-items: center;
+ align-items: start;
   padding: clamp(26px, 5vw, 58px);
   border: 1px solid rgba(103, 232, 249, 0.28);
   border-radius: 28px;
@@ -33,7 +33,18 @@
   overflow: hidden;
   position: relative;
 }
-
+.start-screen,
+.end-screen {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 14px;
+  text-align: center;
+  padding-top: 430px;
+  max-width: 760px;
+  margin: 0 auto;
+}
 h1 {
   max-width: 860px;
   margin: 0;
