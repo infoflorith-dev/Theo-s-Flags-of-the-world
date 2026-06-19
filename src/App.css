@@ -368,26 +368,25 @@ h1 {
     gap: 8px;
   }
 
-  .continent-button {
-    min-height: 74px;
-    padding: 6px;
-    border-radius: 13px;
-    gap: 2px;
-  }
+.continent-button {
+  min-height: 58px;
+  padding: 4px;
+  border-radius: 13px;
+  gap: 2px;
+}
 
   .continent-icon {
     font-size: 1.45rem;
   }
 
-  .continent-title {
-    font-size: 0.82rem;
-    line-height: 1;
-  }
+.continent-title {
+  font-size: 0.72rem;
+  line-height: 1;
+}
 
-  .continent-subtitle {
-    font-size: 0.64rem;
-    line-height: 1.15;
-  }
+  ..continent-subtitle {
+  display: none;
+}
 
   .stats-row,
   .scoreboard,
