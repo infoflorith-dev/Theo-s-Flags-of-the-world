@@ -329,3 +329,43 @@ h1 {
     min-height: 64px;
   }
 }
+.continent-button {
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.continent-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.continent-title {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.continent-subtitle {
+  font-size: 0.8rem;
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+.continent-picker {
+  width: min(1100px, 100%);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.continent-button.active {
+  border-color: #22d3ee;
+  box-shadow:
+    0 0 25px rgba(34, 211, 238, 0.35),
+    inset 0 0 20px rgba(34, 211, 238, 0.12);
+}
