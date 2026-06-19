@@ -86,9 +86,9 @@ function createRounds(continent = 'all') {
   return shuffle(pool)
     .slice(0, TOTAL_ROUNDS)
     .map((country) => {
-      const wrongAnswers = shuffle(
-        countries.filter((candidate) => candidate.code !== country.code),
-      ).slice(0, 3)
+    const wrongAnswers = shuffle(
+  pool.filter((candidate) => candidate.code !== country.code),
+).slice(0, 3)
 
       return {
         country,
