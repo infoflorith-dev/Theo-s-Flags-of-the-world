@@ -473,7 +473,7 @@ h1 {
   display: grid;
   justify-items: center;
   gap: 6px;
-  margin-top: 12px;
+ margin-top: -20px;
 }
 
 .hint-label {
