@@ -11,8 +11,79 @@ function shuffle(items) {
   return [...items].sort(() => Math.random() - 0.5)
 }
 
-function createRounds() {
-  return shuffle(countries)
+const CONTINENTS = [
+  { label: '🌍 Alles', value: 'all' },
+  { label: '🇪🇺 Europa', value: 'Europa' },
+  { label: '🌍 Afrika', value: 'Afrika' },
+  { label: '🌏 Azië', value: 'Azie' },
+  { label: '🌎 Noord-Amerika', value: 'Noord-Amerika' },
+  { label: '🌎 Zuid-Amerika', value: 'Zuid-Amerika' },
+  { label: '🌊 Oceanië', value: 'Oceanie' },
+]
+
+function getContinent(code) {
+  const map = {
+    nl: 'Europa', be: 'Europa', de: 'Europa', fr: 'Europa', es: 'Europa',
+    it: 'Europa', gb: 'Europa', no: 'Europa', se: 'Europa', fi: 'Europa',
+    dk: 'Europa', pl: 'Europa', pt: 'Europa', gr: 'Europa', ch: 'Europa',
+    at: 'Europa', ie: 'Europa', is: 'Europa', lu: 'Europa', li: 'Europa',
+    mc: 'Europa', sm: 'Europa', va: 'Europa', mt: 'Europa', cy: 'Europa',
+    ee: 'Europa', lv: 'Europa', lt: 'Europa', by: 'Europa', ua: 'Europa',
+    md: 'Europa', ro: 'Europa', bg: 'Europa', rs: 'Europa', me: 'Europa',
+    ba: 'Europa', hr: 'Europa', si: 'Europa', sk: 'Europa', cz: 'Europa',
+    hu: 'Europa', al: 'Europa', mk: 'Europa', ad: 'Europa',
+
+    dz: 'Afrika', ao: 'Afrika', bj: 'Afrika', bw: 'Afrika', bf: 'Afrika',
+    bi: 'Afrika', cm: 'Afrika', cv: 'Afrika', cf: 'Afrika', td: 'Afrika',
+    km: 'Afrika', cg: 'Afrika', cd: 'Afrika', ci: 'Afrika', dj: 'Afrika',
+    eg: 'Afrika', gq: 'Afrika', er: 'Afrika', sz: 'Afrika', et: 'Afrika',
+    ga: 'Afrika', gm: 'Afrika', gh: 'Afrika', gn: 'Afrika', gw: 'Afrika',
+    ke: 'Afrika', ls: 'Afrika', lr: 'Afrika', ly: 'Afrika', mg: 'Afrika',
+    mw: 'Afrika', ml: 'Afrika', ma: 'Afrika', mr: 'Afrika', mu: 'Afrika',
+    mz: 'Afrika', na: 'Afrika', ne: 'Afrika', ng: 'Afrika', rw: 'Afrika',
+    st: 'Afrika', sn: 'Afrika', sc: 'Afrika', sl: 'Afrika', so: 'Afrika',
+    za: 'Afrika', ss: 'Afrika', sd: 'Afrika', tz: 'Afrika', tg: 'Afrika',
+    tn: 'Afrika', ug: 'Afrika', zm: 'Afrika', zw: 'Afrika',
+
+    af: 'Azie', am: 'Azie', az: 'Azie', bh: 'Azie', bd: 'Azie', bt: 'Azie',
+    bn: 'Azie', kh: 'Azie', cn: 'Azie', ge: 'Azie', in: 'Azie', id: 'Azie',
+    ir: 'Azie', iq: 'Azie', il: 'Azie', jp: 'Azie', jo: 'Azie', kz: 'Azie',
+    kw: 'Azie', kg: 'Azie', la: 'Azie', lb: 'Azie', my: 'Azie', mv: 'Azie',
+    mn: 'Azie', mm: 'Azie', np: 'Azie', kp: 'Azie', om: 'Azie', pk: 'Azie',
+    ps: 'Azie', ph: 'Azie', qa: 'Azie', sa: 'Azie', sg: 'Azie', kr: 'Azie',
+    lk: 'Azie', sy: 'Azie', tj: 'Azie', th: 'Azie', tl: 'Azie', tr: 'Azie',
+    tm: 'Azie', ae: 'Azie', uz: 'Azie', vn: 'Azie', ye: 'Azie',
+
+    ca: 'Noord-Amerika', us: 'Noord-Amerika', mx: 'Noord-Amerika',
+    bz: 'Noord-Amerika', cr: 'Noord-Amerika', sv: 'Noord-Amerika',
+    gt: 'Noord-Amerika', hn: 'Noord-Amerika', ni: 'Noord-Amerika',
+    pa: 'Noord-Amerika', ag: 'Noord-Amerika', bs: 'Noord-Amerika',
+    bb: 'Noord-Amerika', cu: 'Noord-Amerika', dm: 'Noord-Amerika',
+    do: 'Noord-Amerika', gd: 'Noord-Amerika', ht: 'Noord-Amerika',
+    jm: 'Noord-Amerika', kn: 'Noord-Amerika', lc: 'Noord-Amerika',
+    vc: 'Noord-Amerika', tt: 'Noord-Amerika',
+
+    ar: 'Zuid-Amerika', bo: 'Zuid-Amerika', br: 'Zuid-Amerika',
+    cl: 'Zuid-Amerika', co: 'Zuid-Amerika', ec: 'Zuid-Amerika',
+    gy: 'Zuid-Amerika', py: 'Zuid-Amerika', pe: 'Zuid-Amerika',
+    sr: 'Zuid-Amerika', uy: 'Zuid-Amerika', ve: 'Zuid-Amerika',
+
+    au: 'Oceanie', fj: 'Oceanie', ki: 'Oceanie', mh: 'Oceanie',
+    fm: 'Oceanie', nr: 'Oceanie', nz: 'Oceanie', pw: 'Oceanie',
+    pg: 'Oceanie', sb: 'Oceanie', ws: 'Oceanie', to: 'Oceanie',
+    tv: 'Oceanie', vu: 'Oceanie',
+  }
+
+  return map[code] || 'Overig'
+}
+
+function createRounds(continent = 'all') {
+  const pool =
+    continent === 'all'
+      ? countries
+      : countries.filter((country) => getContinent(country.code) === continent)
+
+  return shuffle(pool)
     .slice(0, TOTAL_ROUNDS)
     .map((country) => {
       const wrongAnswers = shuffle(
@@ -67,6 +138,7 @@ function App() {
     readStoredNumber(HIGH_SCORE_KEY),
   )
   const [gamesPlayed, setGamesPlayed] = useState(() =>
+      const [selectedContinent, setSelectedContinent] = useState('all')
     readStoredNumber(GAMES_PLAYED_KEY),
   )
 
@@ -79,7 +151,7 @@ function App() {
   )
 
   function startGame() {
-    setRounds(createRounds())
+ setRounds(createRounds(selectedContinent))
     setRoundIndex(0)
     setTimeLeft(ROUND_SECONDS)
     setScore(0)
@@ -161,7 +233,20 @@ function App() {
               Herken 20 vlaggen. Hoe sneller je goed antwoordt, hoe meer
               punten je pakt.
             </p>
-
+            <div className="continent-picker">
+              {CONTINENTS.map((continent) => (
+                <button
+                  className={`continent-button ${
+                    selectedContinent === continent.value ? 'active' : ''
+                  }`}
+                  key={continent.value}
+                  onClick={() => setSelectedContinent(continent.value)}
+                  type="button"
+                >
+                  {continent.label}
+                </button>
+              ))}
+            </div>
             <div className="stats-row" aria-label="Highscore">
               <div>
                 <span>Highscore</span>
