@@ -24,8 +24,8 @@ min-height: min(900px, calc(100svh - 48px));
       rgba(0, 0, 0, 0.75)
     ),
     url('./assets/flags-background.png');
-  background-size: cover;
-  background-position: center;
+ background-size: contain;
+background-position: center top;
   background-repeat: no-repeat;
   box-shadow:
     0 40px 130px rgba(0, 0, 0, 0.62),
