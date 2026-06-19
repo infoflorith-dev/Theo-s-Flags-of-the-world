@@ -347,7 +347,7 @@ h1 {
 }
 
 .game-mode-picker {
-  width: 70%;
+  width: 67%;
   grid-template-columns: 1fr 1fr;
   display: grid;
   gap: 6px;
@@ -363,7 +363,7 @@ h1 {
 }
 
 .continent-picker {
-  width: 70%;
+  width: 67%;
   grid-template-columns: repeat(2, 1fr);
   gap: 6px;
 }
