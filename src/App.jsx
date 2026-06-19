@@ -489,17 +489,7 @@ if (gameMode === 'survival') {
             <div className="timer" aria-label={`Nog ${timeLeft} seconden`}>
   {timeLeft}
 
-  {gameMode === 'survival' && (
-    <button
-      className="hint-button"
-      disabled={hintsLeft <= 0 || Boolean(selectedCode)}
-      onClick={useHint}
-      type="button"
-    >
-      💡 {hintsLeft}
-    </button>
-  )}
-</div>
+ </div>
               <div>
                 <span>Score</span>
                 <strong>{score}</strong>
