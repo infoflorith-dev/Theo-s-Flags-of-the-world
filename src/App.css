@@ -3,117 +3,188 @@
   display: grid;
   place-items: center;
   padding: 24px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.18), transparent 32%),
+    radial-gradient(circle at 80% 80%, rgba(251, 146, 60, 0.16), transparent 30%),
+    linear-gradient(135deg, #020617, #050816 55%, #020617);
 }
 
 .game-card {
-  width: min(940px, 100%);
-  min-height: min(760px, calc(100svh - 48px));
+  width: min(1040px, 100%);
+  min-height: min(820px, calc(100svh - 48px));
   display: grid;
   align-items: center;
-  padding: clamp(20px, 4vw, 44px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 8px;
+  padding: clamp(26px, 5vw, 58px);
+  border: 1px solid rgba(103, 232, 249, 0.28);
+  border-radius: 28px;
   background:
-    linear-gradient(145deg, rgba(24, 28, 43, 0.95), rgba(11, 14, 24, 0.96)),
-    radial-gradient(circle at 30% 10%, rgba(253, 186, 116, 0.2), transparent 36%);
-  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.32);
+    radial-gradient(circle at top, rgba(103, 232, 249, 0.13), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(250, 204, 21, 0.12), transparent 35%),
+    linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 0.98));
+  box-shadow:
+    0 40px 130px rgba(0, 0, 0, 0.62),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+.game-card::before {
+  content: "🌍";
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(3rem, 7vw, 5.2rem);
+  opacity: 0.9;
+  filter: drop-shadow(0 0 24px rgba(103, 232, 249, 0.45));
 }
 
 .start-screen,
 .end-screen,
 .play-screen {
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .start-screen,
 .end-screen {
   display: grid;
   justify-items: center;
-  gap: 24px;
+  gap: 22px;
   text-align: center;
+  padding-top: 70px;
+}
+
+h1 {
+  max-width: 860px;
+  margin: 0;
+  color: #f8fafc;
+  font-size: clamp(3rem, 8vw, 6.4rem);
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+  text-shadow:
+    0 0 26px rgba(255, 255, 255, 0.18),
+    0 14px 44px rgba(0, 0, 0, 0.55);
 }
 
 .eyebrow {
   margin: 0;
   color: #67e8f9;
   font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
+  font-weight: 900;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
 .intro {
-  max-width: 560px;
+  max-width: 620px;
   margin: 0;
   color: #cbd5e1;
-  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  font-size: clamp(1rem, 2.4vw, 1.25rem);
+  line-height: 1.45;
+}
+
+.continent-picker {
+  width: min(760px, 100%);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+  gap: 12px;
+}
+
+.continent-button {
+  min-height: 58px;
+  padding: 12px 16px;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 14px;
+  color: #f8fafc;
+  background:
+    linear-gradient(180deg, rgba(15, 23, 42, 0.94), rgba(2, 6, 23, 0.92));
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 14px 28px rgba(0, 0, 0, 0.2);
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.continent-button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(103, 232, 249, 0.55);
+}
+
+.continent-button.active {
+  color: #07111f;
+  background: linear-gradient(135deg, #67e8f9, #facc15);
+  border-color: transparent;
+  box-shadow:
+    0 18px 38px rgba(103, 232, 249, 0.23),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .stats-row {
-  width: min(520px, 100%);
+  width: min(720px, 100%);
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
 }
 
 .stats-row > div,
 .scoreboard > div {
-  min-height: 84px;
+  min-height: 100px;
   display: grid;
   align-content: center;
-  gap: 6px;
-  padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.06);
+  gap: 8px;
+  padding: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.035));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 16px 38px rgba(0, 0, 0, 0.22);
 }
 
 .stats-row span,
 .scoreboard span {
-  color: #94a3b8;
+  color: #a8c7e8;
   font-size: 0.78rem;
-  font-weight: 700;
+  font-weight: 900;
   text-transform: uppercase;
 }
 
 .stats-row strong,
 .scoreboard strong {
   color: #f8fafc;
-  font-size: clamp(1.45rem, 4vw, 2.1rem);
+  font-size: clamp(1.6rem, 4vw, 2.35rem);
   line-height: 1;
 }
 
 .primary-button,
 .answer-button {
   border: 0;
-  border-radius: 8px;
+  border-radius: 14px;
   font: inherit;
-  font-weight: 800;
+  font-weight: 900;
   cursor: pointer;
-  transition:
-    transform 160ms ease,
-    border-color 160ms ease,
-    background 160ms ease,
-    box-shadow 160ms ease;
+  transition: transform 160ms ease, box-shadow 160ms ease;
 }
 
 .primary-button {
-  min-width: 180px;
-  padding: 16px 26px;
-  color: #111827;
-  background: linear-gradient(135deg, #facc15, #fb923c);
-  box-shadow: 0 16px 28px rgba(251, 146, 60, 0.2);
+  min-width: 240px;
+  padding: 18px 34px;
+  color: #07111f;
+  background: linear-gradient(135deg, #fde047, #fb923c);
+  box-shadow:
+    0 20px 45px rgba(251, 146, 60, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  font-size: 1.05rem;
 }
 
 .primary-button:hover,
 .answer-button:hover:not(:disabled) {
   transform: translateY(-2px);
-}
-
-.primary-button:focus-visible,
-.answer-button:focus-visible {
-  outline: 3px solid #67e8f9;
-  outline-offset: 3px;
 }
 
 .play-screen {
@@ -129,22 +200,22 @@
 }
 
 .scoreboard .timer {
-  min-height: 106px;
+  min-height: 112px;
   color: #facc15;
   font-size: clamp(3.2rem, 8vw, 5.2rem);
-  font-weight: 900;
+  font-weight: 1000;
   line-height: 1;
 }
 
 .flag-stage {
   display: grid;
   place-items: center;
-  min-height: clamp(190px, 38vw, 310px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
+  min-height: clamp(190px, 38vw, 320px);
+  border: 1px solid rgba(103, 232, 249, 0.18);
+  border-radius: 20px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03)),
-    rgba(2, 6, 23, 0.72);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.025)),
+    rgba(2, 6, 23, 0.76);
 }
 
 .flag-image {
@@ -152,10 +223,10 @@
   max-height: clamp(180px, 34vw, 340px);
   aspect-ratio: 16 / 10;
   object-fit: contain;
-  border-radius: 6px;
+  border-radius: 12px;
   background: rgba(248, 250, 252, 0.96);
   box-shadow:
-    0 18px 36px rgba(0, 0, 0, 0.34),
+    0 22px 44px rgba(0, 0, 0, 0.42),
     0 0 0 1px rgba(255, 255, 255, 0.18);
 }
 
@@ -166,23 +237,23 @@
   min-height: clamp(180px, 34vw, 340px);
   padding: 24px;
   border: 1px dashed rgba(255, 255, 255, 0.28);
-  border-radius: 8px;
+  border-radius: 14px;
   color: #cbd5e1;
   background: rgba(15, 23, 42, 0.82);
   font-size: clamp(1.1rem, 3vw, 1.6rem);
-  font-weight: 800;
+  font-weight: 900;
 }
 
 .round-feedback {
   min-height: 46px;
   margin: -8px 0 0;
   padding: 12px 16px;
-  border-radius: 8px;
+  border-radius: 14px;
   color: #f8fafc;
   background: rgba(15, 23, 42, 0.88);
   border: 1px solid rgba(148, 163, 184, 0.3);
   text-align: center;
-  font-weight: 800;
+  font-weight: 900;
 }
 
 .round-feedback.correct {
@@ -201,7 +272,7 @@
 }
 
 .answer-button {
-  min-height: 72px;
+  min-height: 76px;
   padding: 16px 18px;
   color: #f8fafc;
   background: rgba(15, 23, 42, 0.92);
@@ -232,6 +303,12 @@
 
   .game-card {
     min-height: calc(100svh - 24px);
+    border-radius: 22px;
+  }
+
+  .start-screen,
+  .end-screen {
+    padding-top: 54px;
   }
 
   .stats-row,
@@ -242,9 +319,9 @@
 
   .scoreboard {
     grid-template-areas:
-      'timer'
-      'question'
-      'score';
+      "timer"
+      "question"
+      "score";
   }
 
   .scoreboard > div:first-child {
@@ -262,28 +339,4 @@
   .answer-button {
     min-height: 64px;
   }
-}
-.continent-picker {
-  width: min(720px, 100%);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
-  gap: 10px;
-}
-
-.continent-button {
-  min-height: 48px;
-  padding: 10px 14px;
-  border: 1px solid rgba(148, 163, 184, 0.34);
-  border-radius: 8px;
-  color: #f8fafc;
-  background: rgba(15, 23, 42, 0.92);
-  font: inherit;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.continent-button.active {
-  color: #111827;
-  background: linear-gradient(135deg, #67e8f9, #facc15);
-  border-color: transparent;
 }
