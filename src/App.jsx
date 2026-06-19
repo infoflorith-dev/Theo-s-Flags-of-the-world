@@ -379,16 +379,22 @@ if (gameMode === 'survival') {
     ? `Survival score: ${roundIndex}`
     : `Eindscore: ${score}`}
 </h1>
-            <div className="stats-row">
-              <div>
-                <span>Highscore</span>
-                <strong>{highScore}</strong>
-              </div>
-              <div>
-                <span>Gespeelde spellen</span>
-                <strong>{gamesPlayed}</strong>
-              </div>
-            </div>
+           <div className="stats-row">
+  <div>
+    <span>Klassiek highscore</span>
+    <strong>{highScore}</strong>
+  </div>
+
+  <div>
+    <span>Survival record</span>
+    <strong>{survivalHighScore}</strong>
+  </div>
+
+  <div>
+    <span>Gespeelde spellen</span>
+    <strong>{gamesPlayed}</strong>
+  </div>
+</div>
 
           <div className="answers">
   <button
