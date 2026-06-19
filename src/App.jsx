@@ -538,15 +538,20 @@ return (
                 )
               })}
             </div>
-            {gameMode === 'survival' && (
-  <button
-    className="hint-button"
-    disabled={hintsLeft <= 0 || Boolean(selectedCode)}
-    onClick={useHint}
-    type="button"
-  >
-    💡 Hulp gebruiken ({hintsLeft})
-  </button>
+       {gameMode === 'survival' && (
+  <div className="hint-flags">
+    {Array.from({ length: hintsLeft }).map((_, index) => (
+      <button
+        className="hint-flag"
+        key={index}
+        disabled={Boolean(selectedCode)}
+        onClick={useHint}
+        type="button"
+      >
+        🇳🇱
+      </button>
+    ))}
+  </div>
 )}
           </div>
         )}
