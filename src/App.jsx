@@ -205,17 +205,21 @@ const progressText = useMemo(() => {
       setTimeLeft((seconds) => {
         const nextSeconds = Math.max(0, seconds - 1)
 
-        if (nextSeconds === 0) {
-          setSelectedCode('timeout')
-          setRoundResult('timeout')
-        }
+      if (nextSeconds === 0) {
+  setSelectedCode('timeout')
+  setRoundResult('timeout')
+
+  if (gameMode === 'survival') {
+    window.setTimeout(() => finishGame(score), 1300)
+  }
+}
 
         return nextSeconds
       })
     }, 1000)
 
     return () => window.clearTimeout(tick)
-  }, [goToNextRound, isPlaying, timeLeft])
+}, [finishGame, gameMode, goToNextRound, isPlaying, score, timeLeft])
 
   function chooseAnswer(answer) {
     if (!currentRound || selectedCode) return
