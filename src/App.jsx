@@ -374,8 +374,11 @@ if (gameMode === 'survival') {
         {screen === 'finished' && (
           <div className="end-screen">
             <p className="eyebrow">Spel afgelopen</p>
-            <h1>Eindscore: {score}</h1>
-
+           <h1>
+  {gameMode === 'survival'
+    ? `Survival score: ${roundIndex}`
+    : `Eindscore: ${score}`}
+</h1>
             <div className="stats-row">
               <div>
                 <span>Highscore</span>
