@@ -560,7 +560,7 @@ return (
         )}
 
        {screen === 'finished' && (
-  <div className="end-screen score-overview-screen">
+  <div className="score-overview-screen">
     <div className="score-title">
       <div className="score-trophy">🏆</div>
       <h1>Scoreoverzicht</h1>
