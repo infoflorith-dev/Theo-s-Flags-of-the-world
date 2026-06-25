@@ -8,6 +8,7 @@ const HIGH_SCORE_KEY = 'theos-flags-high-score'
 const SURVIVAL_HIGH_SCORE_KEY = 'theos-flags-survival-high-score'
 const GAMES_PLAYED_KEY = 'theos-flags-games-played'
 const USA_HIGH_SCORE_KEY = 'theos-flags-usa-high-score'
+const CATEGORY_RECORDS_KEY = 'theos-flags-category-records'
 function shuffle(items) {
   return [...items].sort(() => Math.random() - 0.5)
 }
@@ -196,7 +197,18 @@ function readStoredNumber(key) {
   const value = Number(localStorage.getItem(key))
   return Number.isFinite(value) ? value : 0
 }
+function readStoredObject(key) {
+  try {
+    const value = JSON.parse(localStorage.getItem(key))
+    return value && typeof value === 'object' ? value : {}
+  } catch {
+    return {}
+  }
+}
 
+function getRecordKey(continent, mode) {
+  return `${continent}-${mode}`
+}
 function FlagImage({ country }) {
   const [hasError, setHasError] = useState(false)
 
@@ -245,8 +257,11 @@ function App() {
     readStoredNumber(GAMES_PLAYED_KEY),
   )
   const [selectedContinent, setSelectedContinent] = useState('all')
+  const [categoryRecords, setCategoryRecords] = useState(() =>
+  readStoredObject(CATEGORY_RECORDS_KEY),
+)
   const [gameMode, setGameMode] = useState('classic')
-  const [hintsLeft, setHintsLeft] = useState(3)
+   const [hintsLeft, setHintsLeft] = useState(3)
   const [hiddenAnswerCodes, setHiddenAnswerCodes] = useState([])
   const currentRound = rounds[roundIndex]
   const isPlaying = screen === 'playing' && currentRound && !selectedCode
