@@ -315,7 +315,103 @@ h1 {
 .answer-button:disabled {
   cursor: default;
 }
+.score-overview-screen {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 40px;
+}
 
+.score-title {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.score-trophy {
+  font-size: 4rem;
+  margin-bottom: 8px;
+}
+
+.score-title h1 {
+  font-size: 3.2rem;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+
+.score-title p {
+  color: #cbd5e1;
+  font-size: 1.1rem;
+}
+
+.score-table {
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(103, 232, 249, 0.22);
+  background: rgba(7, 18, 38, 0.85);
+}
+
+.score-table-header,
+.score-table-row {
+  display: grid;
+  grid-template-columns: 1.8fr 0.8fr 0.8fr;
+  align-items: center;
+}
+
+.score-table-header {
+  padding: 18px 24px;
+  background: rgba(17, 48, 94, 0.9);
+  font-weight: 900;
+}
+
+.score-table-header span:nth-child(2) {
+  color: #78ff63;
+  text-align: center;
+}
+
+.score-table-header span:nth-child(3) {
+  color: #ffad33;
+  text-align: center;
+}
+
+.score-table-row {
+  padding: 18px 24px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.score-table-row.active {
+  background: rgba(255,196,0,.12);
+  box-shadow: inset 0 0 0 2px #eab308;
+}
+
+.score-table-row strong:nth-child(2) {
+  color: #78ff63;
+  text-align: center;
+}
+
+.score-table-row strong:nth-child(3) {
+  color: #ffad33;
+  text-align: center;
+}
+
+.score-games {
+  margin-top: 22px;
+  text-align: center;
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(17,48,94,.55);
+  font-size: 1.2rem;
+}
+
+.score-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.secondary-button {
+  background: linear-gradient(135deg,#1d4ed8,#2563eb);
+  color: white;
+}
 @media (max-width: 680px) {
   .game-shell {
     padding: 6px;
