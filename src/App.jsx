@@ -306,48 +306,30 @@ function useHint() {
   setHiddenAnswerCodes(answersToHide)
   setHintsLeft((amount) => amount - 1)
 }
- const finishGame = useCallback((finalScore) => {
-  const survivalScore = gameMode === 'survival' ? roundIndex : 0
-  const nextHighScore = Math.max(highScore, finalScore)
-  const nextSurvivalHighScore = Math.max(survivalHighScore, survivalScore)
-   const nextUsaHighScore =
-  selectedContinent === 'VS'
-    ? Math.max(usaHighScore, finalScore)
-    : usaHighScore
+const finishGame = useCallback((finalScore) => {
+  const playedScore = gameMode === 'survival' ? roundIndex : finalScore
+  const recordKey = getRecordKey(selectedContinent, gameMode)
+
+  const nextCategoryRecords = {
+    ...categoryRecords,
+    [recordKey]: Math.max(categoryRecords[recordKey] || 0, playedScore),
+  }
+
   const nextGamesPlayed = gamesPlayed + 1
 
-if (gameMode === 'classic') {
-  if (selectedContinent === 'VS') {
-    localStorage.setItem(
-      USA_HIGH_SCORE_KEY,
-      String(nextUsaHighScore)
-    )
-    setUsaHighScore(nextUsaHighScore)
-  } else {
-    localStorage.setItem(
-      HIGH_SCORE_KEY,
-      String(nextHighScore)
-    )
-    setHighScore(nextHighScore)
-  }
-}
-
-  if (gameMode === 'survival') {
-    localStorage.setItem(SURVIVAL_HIGH_SCORE_KEY, String(nextSurvivalHighScore))
-    setSurvivalHighScore(nextSurvivalHighScore)
-  }
+  localStorage.setItem(CATEGORY_RECORDS_KEY, JSON.stringify(nextCategoryRecords))
+  setCategoryRecords(nextCategoryRecords)
 
   localStorage.setItem(GAMES_PLAYED_KEY, String(nextGamesPlayed))
   setGamesPlayed(nextGamesPlayed)
+
   setScreen('finished')
 }, [
+  categoryRecords,
   gameMode,
   gamesPlayed,
-  highScore,
   roundIndex,
-  survivalHighScore,
   selectedContinent,
-  usaHighScore,
 ])
   const goToNextRound = useCallback((nextScore = score) => {
     if (roundIndex + 1 >= TOTAL_ROUNDS) {
