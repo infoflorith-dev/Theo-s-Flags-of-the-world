@@ -559,50 +559,58 @@ return (
           </div>
         )}
 
-        {screen === 'finished' && (
-          <div className="end-screen">
-            <p className="eyebrow">Spel afgelopen</p>
-           <h1>
-  {gameMode === 'survival'
-    ? `Survival score: ${roundIndex}`
-    : `Eindscore: ${score}`}
-</h1>
-           <div className="stats-row">
-  <div>
-    <span>Klassiek highscore</span>
-    <strong>{highScore}</strong>
+       {screen === 'finished' && (
+  <div className="end-screen score-overview-screen">
+    <div className="score-title">
+      <div className="score-trophy">🏆</div>
+      <h1>Scoreoverzicht</h1>
+      <p>Alle highscores per categorie en spelmodus</p>
+    </div>
+
+    <div className="score-table">
+      <div className="score-table-header">
+        <span>Categorie</span>
+        <span>Klassiek</span>
+        <span>Survival</span>
+      </div>
+
+      {CONTINENTS.map((continent) => (
+        <div
+          className={`score-table-row ${
+            selectedContinent === continent.value ? 'active' : ''
+          }`}
+          key={continent.value}
+        >
+          <span>{continent.icon} {continent.title}</span>
+          <strong>{categoryRecords[getRecordKey(continent.value, 'classic')] || 0}</strong>
+          <strong>
+            {continent.value === 'VS'
+              ? '—'
+              : categoryRecords[getRecordKey(continent.value, 'survival')] || 0}
+          </strong>
+        </div>
+      ))}
+    </div>
+
+    <div className="score-games">
+      🎮 Gespeelde spellen: <strong>{gamesPlayed}</strong>
+    </div>
+
+    <div className="score-actions">
+      <button className="primary-button" type="button" onClick={startGame}>
+        ▶ Nieuw spel
+      </button>
+
+      <button
+        className="primary-button secondary-button"
+        type="button"
+        onClick={() => setScreen('start')}
+      >
+        🏠 Hoofdmenu
+      </button>
+    </div>
   </div>
-
-  <div>
-    <span>Survival record</span>
-    <strong>{survivalHighScore}</strong>
-  </div>
-
-  <div>
-    <span>Gespeelde spellen</span>
-    <strong>{gamesPlayed}</strong>
-  </div>
-</div>
-
-          <div className="answers">
-  <button
-    className="primary-button"
-    type="button"
-    onClick={startGame}
-  >
-    Opnieuw spelen
-  </button>
-
-  <button
-    className="primary-button"
-    type="button"
-    onClick={() => setScreen('start')}
-  >
-    Hoofdmenu
-  </button>
-</div>
-          </div>
-        )}
+)}
       </section>
     </main>
   )
